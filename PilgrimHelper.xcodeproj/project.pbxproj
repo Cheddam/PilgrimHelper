@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		FD3DA2961FF2099200741823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DA2951FF2099200741823 /* AppDelegate.swift */; };
-		FD3DA2981FF2099200741823 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DA2971FF2099200741823 /* ViewController.swift */; };
+		FD3DA2981FF2099200741823 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DA2971FF2099200741823 /* StartViewController.swift */; };
 		FD3DA29B1FF2099200741823 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3DA2991FF2099200741823 /* Main.storyboard */; };
 		FD3DA29E1FF2099200741823 /* PilgrimHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD3DA29C1FF2099200741823 /* PilgrimHelper.xcdatamodeld */; };
 		FD3DA2A01FF2099200741823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3DA29F1FF2099200741823 /* Assets.xcassets */; };
 		FD3DA2A31FF2099300741823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3DA2A11FF2099300741823 /* LaunchScreen.storyboard */; };
+		FD3DA2AB1FF20CC700741823 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DA2AA1FF20CC700741823 /* DataTypes.swift */; };
+		FDFC45231FF31AA900E26417 /* PlayerListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */; };
+		FDFC45251FF3303100E26417 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFC45241FF3303100E26417 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FD3DA2921FF2099200741823 /* PilgrimHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PilgrimHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3DA2951FF2099200741823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FD3DA2971FF2099200741823 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FD3DA2971FF2099200741823 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		FD3DA29A1FF2099200741823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD3DA29D1FF2099200741823 /* PilgrimHelper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PilgrimHelper.xcdatamodel; sourceTree = "<group>"; };
 		FD3DA29F1FF2099200741823 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD3DA2A21FF2099300741823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3DA2A41FF2099300741823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD3DA2AA1FF20CC700741823 /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
+		FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListTableView.swift; sourceTree = "<group>"; };
+		FDFC45241FF3303100E26417 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				FD3DA2951FF2099200741823 /* AppDelegate.swift */,
-				FD3DA2971FF2099200741823 /* ViewController.swift */,
+				FD3DA2971FF2099200741823 /* StartViewController.swift */,
 				FD3DA2991FF2099200741823 /* Main.storyboard */,
+				FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */,
 				FD3DA29F1FF2099200741823 /* Assets.xcassets */,
 				FD3DA2A11FF2099300741823 /* LaunchScreen.storyboard */,
 				FD3DA2A41FF2099300741823 /* Info.plist */,
 				FD3DA29C1FF2099200741823 /* PilgrimHelper.xcdatamodeld */,
+				FD3DA2AA1FF20CC700741823 /* DataTypes.swift */,
+				FDFC45241FF3303100E26417 /* Model.swift */,
 			);
 			path = PilgrimHelper;
 			sourceTree = "<group>";
@@ -140,7 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD3DA29E1FF2099200741823 /* PilgrimHelper.xcdatamodeld in Sources */,
-				FD3DA2981FF2099200741823 /* ViewController.swift in Sources */,
+				FD3DA2AB1FF20CC700741823 /* DataTypes.swift in Sources */,
+				FDFC45231FF31AA900E26417 /* PlayerListTableView.swift in Sources */,
+				FDFC45251FF3303100E26417 /* Model.swift in Sources */,
+				FD3DA2981FF2099200741823 /* StartViewController.swift in Sources */,
 				FD3DA2961FF2099200741823 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
