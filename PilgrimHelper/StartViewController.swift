@@ -8,6 +8,19 @@
 
 import UIKit
 
+// Shift this please
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class StartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Element References
@@ -55,7 +68,7 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: Init Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        NewPlayerTextField.autocapitalizationType = .words;
+        self.hideKeyboardWhenTappedAround()
     }
 
 
@@ -76,6 +89,9 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
         PlayerListTable.reloadData()
     }
     
+    @IBAction func finishAddingPlayers(_ sender: UIButton) {
+        self.dismissKeyboard()
+    }
     
     // MARK: Other
     override func didReceiveMemoryWarning() {
