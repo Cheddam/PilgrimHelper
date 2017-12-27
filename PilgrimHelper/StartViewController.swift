@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  StartViewController.swift
 //  PilgrimHelper
 //
 //  Created by Garion Herman on 26/12/17.
@@ -55,6 +55,7 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: Init Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        NewPlayerTextField.autocapitalizationType = .words;
     }
 
 
