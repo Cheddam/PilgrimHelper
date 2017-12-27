@@ -28,47 +28,59 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var AddPlayerButton: UIButton!
     @IBOutlet weak var PlayerListTable: UITableView!
     
-    var model = Model()
+    var modelController: ModelController!
     
     
     // MARK: Table Config / Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.Players.count
+        return modelController.players.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerListCell", for: indexPath)
         
-        cell.textLabel?.text = model.Players[indexPath.row]
+        cell.textLabel?.text = modelController.players[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedItem = model.Players[sourceIndexPath.row]
+        let movedItem = modelController.players[sourceIndexPath.row]
         
-        model.Players.remove(at: sourceIndexPath.row)
-        model.Players.insert(movedItem, at: destinationIndexPath.row)
+        modelController.players.remove(at: sourceIndexPath.row)
+        modelController.players.insert(movedItem, at: destinationIndexPath.row)
         
         // tableView.reloadData() - Enable for debugging
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            model.Players.remove(at: indexPath.row)
+            modelController.players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            if (model.Players.count < model.MaxPlayerCount) {
+            if (modelController.players.count < modelController.MaxPlayerCount) {
                 AddPlayerButton.isEnabled = true
             }
         }
     }
     
     
-    // MARK: Init Methods
+    // MARK: Init / Exit Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // ???
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let kickoffViewController = segue.destination as? KickoffViewController {
+            kickoffViewController.modelController = modelController
+        }
     }
 
 
@@ -76,20 +88,20 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func addNewPlayer(_ sender: UIButton) {
         if let newPlayer = NewPlayerTextField.text {
             if (newPlayer != "") {
-                model.Players.append(newPlayer)
+                modelController.players.append(newPlayer)
             }
         }
         
         NewPlayerTextField.text = ""
         
-        if (model.Players.count >= model.MaxPlayerCount) {
+        if (modelController.players.count >= modelController.MaxPlayerCount) {
             sender.isEnabled = false
         }
         
         PlayerListTable.reloadData()
     }
     
-    @IBAction func finishAddingPlayers(_ sender: UIButton) {
+    @IBAction func finishAddingplayers(_ sender: UIButton) {
         self.dismissKeyboard()
     }
     
