@@ -78,7 +78,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDN-Eb-ia7">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDN-Eb-ia7">
                                 <rect key="frame" x="0.0" y="579" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0039860201068222523" green="0.47981184720993042" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,6 +86,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="LF9-kY-48G" kind="show" id="hRv-0F-38m"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -94,6 +97,7 @@
                     <connections>
                         <outlet property="AddPlayerButton" destination="alx-5s-xzp" id="Tsy-aU-apW"/>
                         <outlet property="NewPlayerTextField" destination="bVq-e7-Yiv" id="Wjr-Uq-h8A"/>
+                        <outlet property="NextStepButton" destination="uDN-Eb-ia7" id="05H-1t-yxg"/>
                         <outlet property="PlayerListTable" destination="ITM-cc-Vev" id="mev-sq-d0w"/>
                     </connections>
                 </viewController>
@@ -162,6 +166,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ApR-17-D7C"/>
                     </view>
+                    <connections>
+                        <outlet property="GameRulesLabel" destination="r3q-UJ-sys" id="Pio-Db-VhZ"/>
+                        <outlet property="PlayerCountTitleLabel" destination="mPE-79-EKs" id="Fbt-Z7-124"/>
+                        <outlet property="StartingPlayerNameLabel" destination="f19-zm-a2c" id="erf-HQ-RaE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iqf-97-IDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

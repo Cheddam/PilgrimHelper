@@ -27,40 +27,43 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var NewPlayerTextField: UITextField!
     @IBOutlet weak var AddPlayerButton: UIButton!
     @IBOutlet weak var PlayerListTable: UITableView!
+    @IBOutlet weak var NextStepButton: UIButton!
     
-    var modelController: ModelController!
+    var model: ModelController!
     
     
     // MARK: Table Config / Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return modelController.players.count
+        return model.players.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerListCell", for: indexPath)
         
-        cell.textLabel?.text = modelController.players[indexPath.row]
+        cell.textLabel?.text = model.players[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedItem = modelController.players[sourceIndexPath.row]
+        let movedItem = model.players[sourceIndexPath.row]
         
-        modelController.players.remove(at: sourceIndexPath.row)
-        modelController.players.insert(movedItem, at: destinationIndexPath.row)
+        model.players.remove(at: sourceIndexPath.row)
+        model.players.insert(movedItem, at: destinationIndexPath.row)
         
         // tableView.reloadData() - Enable for debugging
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            modelController.players.remove(at: indexPath.row)
+            model.players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            if (modelController.players.count < modelController.MaxPlayerCount) {
+            if (model.players.count < model.MaxPlayerCount) {
                 AddPlayerButton.isEnabled = true
             }
+            
+            toggleNextButton((model.players.count > 0))
         }
     }
     
@@ -68,18 +71,14 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: Init / Exit Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        // ???
+        self.hideKeyboardWhenTappedAround()
+        NextStepButton.backgroundColor = UIColor.gray
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let kickoffViewController = segue.destination as? KickoffViewController {
-            kickoffViewController.modelController = modelController
+            kickoffViewController.model = model
         }
     }
 
@@ -88,27 +87,27 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func addNewPlayer(_ sender: UIButton) {
         if let newPlayer = NewPlayerTextField.text {
             if (newPlayer != "") {
-                modelController.players.append(newPlayer)
+                model.players.append(newPlayer)
             }
         }
         
         NewPlayerTextField.text = ""
         
-        if (modelController.players.count >= modelController.MaxPlayerCount) {
+        if (model.players.count >= model.MaxPlayerCount) {
             sender.isEnabled = false
         }
+        
+        toggleNextButton((model.players.count > 0))
         
         PlayerListTable.reloadData()
     }
     
-    @IBAction func finishAddingplayers(_ sender: UIButton) {
-        self.dismissKeyboard()
+    
+    // MARK: Helper Methods
+    func toggleNextButton(_ enable: Bool) {
+        NextStepButton.isEnabled = enable
+        NextStepButton.backgroundColor = enable ? UIColor.blue : UIColor.gray
     }
     
-    // MARK: Other
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 

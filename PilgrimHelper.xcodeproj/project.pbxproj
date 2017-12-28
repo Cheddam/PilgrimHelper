@@ -30,6 +30,7 @@
 		FD3DA2A41FF2099300741823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD3DA2AA1FF20CC700741823 /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		FDDBD1031FF454440004F7EE /* KickoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickoffViewController.swift; sourceTree = "<group>"; };
+		FDDBD1051FF46C890004F7EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListTableView.swift; sourceTree = "<group>"; };
 		FDFC45241FF3303100E26417 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +76,7 @@
 				FD3DA29C1FF2099200741823 /* PilgrimHelper.xcdatamodeld */,
 				FD3DA2AA1FF20CC700741823 /* DataTypes.swift */,
 				FDFC45241FF3303100E26417 /* ModelController.swift */,
+				FDDBD1051FF46C890004F7EE /* README.md */,
 			);
 			path = PilgrimHelper;
 			sourceTree = "<group>";
