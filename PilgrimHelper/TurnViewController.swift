@@ -8,6 +8,14 @@
 
 import UIKit
 
+// TODO: Move this
+enum CellState {
+    case COMPLETED_ACTION
+    case CURRENT_ACTION
+    case UPCOMING_ACTION
+}
+
+
 class TurnViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var model: ModelController!
@@ -51,8 +59,39 @@ class TurnViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NextStepButton.isEnabled = true
         NextStepButton.backgroundColor = UIColor.blue
+    }
+    
+    func updateTurnView() {
+        // Apply current player name to title
+        CurrentPlayerTitleLabel.text = "\(model.currentTurnPlayer())'s Turn"
         
-        TurnProgressIndicator.progress = 0
+        // Update turn progress indicator
+        let progress = model.currentTurnProgress()
+        TurnProgressIndicator.setProgress(progress, animated: progress > 0)
+        
+        // Apply phase name
+        CurrentPhaseNameLabel.text = "\(model.currentPhaseName()) Phase"
+        
+        // Apply steps for current phase
+        currentActionList = model.currentPhaseActions()
+        PhaseStepListTable.reloadData()
+        // TODO: Reset height to avoid excess cell display?
+        
+        // Apply details for current step
+        CurrentStepDetailsLabel.text = model.currentActionDetails() as String
+        CurrentStepDetailsLabel.sizeToFit()
+        
+        // Enable / disable phase skipping as needed
+        if (model.isFirstActionInPhase()) {
+            SkipPhaseButton.isEnabled = true
+            SkipPhaseButton.backgroundColor = UIColor.orange
+        } else {
+            SkipPhaseButton.isEnabled = false
+            SkipPhaseButton.backgroundColor = UIColor.gray
+        }
+        
+        // Set 'next step' button label based on what it'll do
+        NextStepButton.titleLabel!.text = (model.isLastActionInTurn()) ? "Next Turn" : "Next Step"
     }
     
     // MARK: Table Config / Methods
@@ -63,31 +102,49 @@ class TurnViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActionListCell", for: indexPath)
         let action = currentActionList[indexPath.row]
-        let currentActionID = model.turnState.currentAction
+        let currentActionID = model.currentAction().id
+        var cellState = CellState.UPCOMING_ACTION
         
         cell.textLabel?.text = action.name
         
         // Custom cell styling based on state
         if (action.id < currentActionID) {
-            cell.backgroundColor = UIColor.green
-            cell.textLabel?.textColor = UIColor.white
-            cell.accessoryType = .checkmark
+            cellState = CellState.COMPLETED_ACTION
         } else if (action.id == currentActionID) {
-            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        } else if (action.id > currentActionID) {
-            cell.textLabel?.textColor = UIColor.gray
+            cellState = CellState.CURRENT_ACTION
         }
+        
+        applyCellState(cell, state: cellState)
         
         return cell
     }
+
+    @IBAction func triggerNextStep(_ sender: Any) {
+        model.prepareNextAction()
+        updateTurnView()
+    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let action = currentActionList[indexPath.row]
-        let currentActionID = model.turnState.currentAction
-        
-        if (action.id == currentActionID) {
+    // Sets appropriate styles for a cell based on its state
+    func applyCellState(_ cell: UITableViewCell, state: CellState) {
+        switch state {
+            case .COMPLETED_ACTION:
+                cell.textLabel?.textColor = UIColor.green
+                cell.accessoryType = .checkmark
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+                break
             
+            case .CURRENT_ACTION:
+                cell.textLabel?.textColor = UIColor.black
+                cell.accessoryType = .none
+                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+                break
+            
+            case .UPCOMING_ACTION:
+                cell.textLabel?.textColor = UIColor.gray
+                cell.accessoryType = .none
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+                break
         }
     }
-
+    
 }

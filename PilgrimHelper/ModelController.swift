@@ -11,6 +11,7 @@ import Foundation
 class ModelController {
     
     // MARK: Static Data
+    // TODO: The order of PhaseList and ActionList is very hardcoded atm, need to find a better way of structuring this
     public let MaxPlayerCount = 4
     public let PhaseList = [
         Phase(id: 1, name: "Acquisition"),
@@ -21,6 +22,9 @@ class ModelController {
         Action(id: 1, phaseID: 1, name: "Generate Resources", details: "Eat salami beforehand"),
         Action(id: 2, phaseID: 1, name: "Acquire Cards", details: "DO NOT EAT SALAMI DURING THIS ACTION"),
         Action(id: 3, phaseID: 2, name: "Identify Target", details: "salami might be ok here"),
+        Action(id: 4, phaseID: 3, name: "Destroy Ham", details: "uh"),
+        Action(id: 5, phaseID: 3, name: "Underappreciate Obscure Band", details: "welp"),
+        Action(id: 6, phaseID: 3, name: "Rotate Dentures", details: "sure thing"),
     ]
     public let RuleSets = [
         RuleSet(playerCount: 1, rules: "Exclude Wallace and Kim from the pool of available characters."),
@@ -36,7 +40,7 @@ class ModelController {
     
     // MARK: Game State
     var startingPlayer = 0
-    var turnState = TurnState(player: 0, isFirstTurn: true, currentPhase: 1, currentAction: 1)
+    var turnState = TurnState(player: 0, isFirstTurn: true, currentPhase: 0, currentAction: 0)
     
     
     // MARK: Getter Methods
@@ -50,24 +54,47 @@ class ModelController {
         return matchingRulesets.first!.rules
     }
     
+    // MARK: Phase Getters
+    public func currentPhase() -> Phase {
+        return PhaseList[turnState.currentPhase]
+    }
+    
+    public func currentPhaseName() -> String {
+        return currentPhase().name
+    }
+    
+    public func currentPhaseActions() -> [Action] {
+        return ActionList.filter { $0.phaseID == currentPhase().id }
+    }
+    
+    // MARK: Action Getters
+    public func currentAction() -> Action {
+        return ActionList[turnState.currentAction]
+    }
+    
+    public func currentActionDetails() -> String {
+        return currentAction().details
+    }
+    
+    public func isLastActionInTurn() -> Bool {
+        return turnState.currentAction == (ActionList.count - 1)
+    }
+    
+    public func isFirstActionInPhase() -> Bool {
+        return currentPhaseActions().first!.id == currentAction().id
+    }
+    
+    public func isLastActionInPhase() -> Bool {
+        return currentPhaseActions().last!.id == currentAction().id
+    }
+    
+    // MARK: Turn Getters
     public func currentTurnPlayer() -> String {
         return players[turnState.player].name
     }
     
-    public func currentPhaseName() -> String {
-        let matchingPhases = PhaseList.filter { $0.id == turnState.currentPhase }
-        
-        return matchingPhases.first!.name
-    }
-    
-    public func currentPhaseActions() -> [Action] {
-        return ActionList.filter { $0.phaseID == turnState.currentPhase }
-    }
-    
-    public func currentActionDetails() -> String {
-        let matchingActions = ActionList.filter { $0.id == turnState.currentAction }
-        
-        return matchingActions.first!.details
+    public func currentTurnProgress() -> Float {
+        return ((1.0 / Float(ActionList.count)) * (Float(currentAction().id) - 1.0))
     }
     
     
@@ -81,21 +108,24 @@ class ModelController {
         let maxPlayerIndex = players.count - 1
         
         turnState.player = (turnState.player == maxPlayerIndex) ? 0 : turnState.player + 1
-        turnState.currentPhase = 1
-        turnState.currentAction = 1
+        turnState.currentPhase = 0
+        turnState.currentAction = 0
         turnState.isFirstTurn = false // Yes this will be set more often than necessary, shush
     }
     
-    public func nextAction(_ nextAction: Action) {
-        let actions = currentPhaseActions()
-        
-        if (actions.index(where: { $0.id == nextAction.id}) == actions.count - 1) {
-            // Phase is complete, shift to next phase
-            turnState.currentPhase += 1
-            
-            // TODO: This feels super wonky, think we need to store a list of completed actions / phases or something
+    public func prepareNextAction() {
+        if isLastActionInTurn() {
+            // Turn is complete, reset and exit
+            prepareNextTurn()
+            return
         }
         
+        if (isLastActionInPhase()) {
+            // Phase is complete, shift to next phase
+            turnState.currentPhase += 1
+        }
+        
+        turnState.currentAction += 1
     }
     
 }
