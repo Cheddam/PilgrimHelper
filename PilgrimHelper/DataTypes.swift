@@ -9,6 +9,18 @@
 import Foundation
 
 
+struct Player {
+    let name: String
+    var skippedAcquisitionPhase: Bool
+    var skippedCombatPhase: Bool
+    
+    init(_ name: String) {
+        self.name = name
+        self.skippedAcquisitionPhase = false
+        self.skippedCombatPhase = false
+    }
+}
+
 struct Phase {
     let id: Int
     let name: String
@@ -17,10 +29,18 @@ struct Phase {
 struct Action {
     let id: Int
     let phaseID: Int
-    var name: String
+    let name: String
+    let details: String
 }
 
 struct RuleSet {
     let playerCount: Int
     let rules: String
+}
+
+struct TurnState {
+    var player: Int
+    var isFirstTurn: Bool = false
+    var currentPhase: Int = 0
+    var currentAction: Int = 0
 }

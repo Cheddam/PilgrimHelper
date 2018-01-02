@@ -40,7 +40,7 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerListCell", for: indexPath)
         
-        cell.textLabel?.text = model.players[indexPath.row]
+        cell.textLabel?.text = model.players[indexPath.row].name
         
         return cell
     }
@@ -85,9 +85,9 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     // MARK: Element Event Handlers
     @IBAction func addNewPlayer(_ sender: UIButton) {
-        if let newPlayer = NewPlayerTextField.text {
-            if (newPlayer != "") {
-                model.players.append(newPlayer)
+        if let newPlayerName = NewPlayerTextField.text {
+            if (newPlayerName != "") {
+                model.players.append(Player(newPlayerName))
             }
         }
         
@@ -100,6 +100,10 @@ class StartViewController: UIViewController, UITableViewDataSource, UITableViewD
         toggleNextButton((model.players.count > 0))
         
         PlayerListTable.reloadData()
+    }
+    
+    @IBAction func finishAddingPlayers(_ sender: Any) {
+        self.dismissKeyboard()
     }
     
     

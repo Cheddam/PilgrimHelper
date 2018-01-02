@@ -14,6 +14,7 @@
 		FD3DA2A01FF2099200741823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3DA29F1FF2099200741823 /* Assets.xcassets */; };
 		FD3DA2A31FF2099300741823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3DA2A11FF2099300741823 /* LaunchScreen.storyboard */; };
 		FD3DA2AB1FF20CC700741823 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DA2AA1FF20CC700741823 /* DataTypes.swift */; };
+		FDD924A51FF4DBED00254908 /* TurnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD924A41FF4DBED00254908 /* TurnViewController.swift */; };
 		FDDBD1041FF454440004F7EE /* KickoffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBD1031FF454440004F7EE /* KickoffViewController.swift */; };
 		FDFC45231FF31AA900E26417 /* PlayerListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */; };
 		FDFC45251FF3303100E26417 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFC45241FF3303100E26417 /* ModelController.swift */; };
@@ -29,6 +30,7 @@
 		FD3DA2A21FF2099300741823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3DA2A41FF2099300741823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD3DA2AA1FF20CC700741823 /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
+		FDD924A41FF4DBED00254908 /* TurnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnViewController.swift; sourceTree = "<group>"; };
 		FDDBD1031FF454440004F7EE /* KickoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickoffViewController.swift; sourceTree = "<group>"; };
 		FDDBD1051FF46C890004F7EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListTableView.swift; sourceTree = "<group>"; };
@@ -68,14 +70,15 @@
 				FD3DA2951FF2099200741823 /* AppDelegate.swift */,
 				FD3DA2971FF2099200741823 /* StartViewController.swift */,
 				FDDBD1031FF454440004F7EE /* KickoffViewController.swift */,
+				FDD924A41FF4DBED00254908 /* TurnViewController.swift */,
 				FD3DA2991FF2099200741823 /* Main.storyboard */,
-				FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */,
 				FD3DA29F1FF2099200741823 /* Assets.xcassets */,
 				FD3DA2A11FF2099300741823 /* LaunchScreen.storyboard */,
 				FD3DA2A41FF2099300741823 /* Info.plist */,
 				FD3DA29C1FF2099200741823 /* PilgrimHelper.xcdatamodeld */,
 				FD3DA2AA1FF20CC700741823 /* DataTypes.swift */,
 				FDFC45241FF3303100E26417 /* ModelController.swift */,
+				FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */,
 				FDDBD1051FF46C890004F7EE /* README.md */,
 			);
 			path = PilgrimHelper;
@@ -156,6 +159,7 @@
 				FD3DA29E1FF2099200741823 /* PilgrimHelper.xcdatamodeld in Sources */,
 				FD3DA2AB1FF20CC700741823 /* DataTypes.swift in Sources */,
 				FDDBD1041FF454440004F7EE /* KickoffViewController.swift in Sources */,
+				FDD924A51FF4DBED00254908 /* TurnViewController.swift in Sources */,
 				FDFC45231FF31AA900E26417 /* PlayerListTableView.swift in Sources */,
 				FDFC45251FF3303100E26417 /* ModelController.swift in Sources */,
 				FD3DA2981FF2099200741823 /* StartViewController.swift in Sources */,
