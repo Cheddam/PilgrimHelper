@@ -44,3 +44,9 @@ struct TurnState {
     var currentPhase: Int = 0
     var currentAction: Int = 0
 }
+
+enum CellState {
+    case COMPLETED_ACTION
+    case CURRENT_ACTION
+    case UPCOMING_ACTION
+}

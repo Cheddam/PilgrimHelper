@@ -14,6 +14,7 @@
 		FD3DA2A01FF2099200741823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3DA29F1FF2099200741823 /* Assets.xcassets */; };
 		FD3DA2A31FF2099300741823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3DA2A11FF2099300741823 /* LaunchScreen.storyboard */; };
 		FD3DA2AB1FF20CC700741823 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DA2AA1FF20CC700741823 /* DataTypes.swift */; };
+		FD3DDC1088EADA7B3CFAAFC7 /* Pods_PilgrimHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBFACAAC615A35A86C168DA /* Pods_PilgrimHelper.framework */; };
 		FDD924A51FF4DBED00254908 /* TurnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD924A41FF4DBED00254908 /* TurnViewController.swift */; };
 		FDDBD1041FF454440004F7EE /* KickoffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBD1031FF454440004F7EE /* KickoffViewController.swift */; };
 		FDFC45231FF31AA900E26417 /* PlayerListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFC45221FF31AA900E26417 /* PlayerListTableView.swift */; };
@@ -21,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		149FD361FBE21A56B1624FEE /* Pods-PilgrimHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PilgrimHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PilgrimHelper/Pods-PilgrimHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		3B27086CD8450B02AA884F7D /* Pods-PilgrimHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PilgrimHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-PilgrimHelper/Pods-PilgrimHelper.release.xcconfig"; sourceTree = "<group>"; };
+		4BBFACAAC615A35A86C168DA /* Pods_PilgrimHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PilgrimHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3DA2921FF2099200741823 /* PilgrimHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PilgrimHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3DA2951FF2099200741823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD3DA2971FF2099200741823 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -42,17 +46,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3DDC1088EADA7B3CFAAFC7 /* Pods_PilgrimHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D0E2EA4E5325DEA89D67CF5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				149FD361FBE21A56B1624FEE /* Pods-PilgrimHelper.debug.xcconfig */,
+				3B27086CD8450B02AA884F7D /* Pods-PilgrimHelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		69E229DB32256690F3F7657B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BBFACAAC615A35A86C168DA /* Pods_PilgrimHelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FD3DA2891FF2099200741823 = {
 			isa = PBXGroup;
 			children = (
 				FD3DA2941FF2099200741823 /* PilgrimHelper */,
 				FD3DA2931FF2099200741823 /* Products */,
+				1D0E2EA4E5325DEA89D67CF5 /* Pods */,
+				69E229DB32256690F3F7657B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD3DA2A71FF2099300741823 /* Build configuration list for PBXNativeTarget "PilgrimHelper" */;
 			buildPhases = (
+				A753CB72AD01DAC21C9641C7 /* [CP] Check Pods Manifest.lock */,
 				FD3DA28E1FF2099200741823 /* Sources */,
 				FD3DA28F1FF2099200741823 /* Frameworks */,
 				FD3DA2901FF2099200741823 /* Resources */,
+				F8A8C5ED071D081A5B5C1D95 /* [CP] Embed Pods Frameworks */,
+				8D1E524BC45427747B448397 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,6 +177,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8D1E524BC45427747B448397 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PilgrimHelper/Pods-PilgrimHelper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A753CB72AD01DAC21C9641C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PilgrimHelper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8A8C5ED071D081A5B5C1D95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PilgrimHelper/Pods-PilgrimHelper-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PilgrimHelper/Pods-PilgrimHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FD3DA28E1FF2099200741823 /* Sources */ = {
@@ -298,13 +379,14 @@
 		};
 		FD3DA2A81FF2099300741823 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 149FD361FBE21A56B1624FEE /* Pods-PilgrimHelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X22FVM8CUN;
+				DEVELOPMENT_TEAM = 8C788R7K2Y;
 				INFOPLIST_FILE = PilgrimHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.edgar.PilgrimHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.edgarind.PilgrimHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -313,13 +395,14 @@
 		};
 		FD3DA2A91FF2099300741823 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B27086CD8450B02AA884F7D /* Pods-PilgrimHelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X22FVM8CUN;
+				DEVELOPMENT_TEAM = 8C788R7K2Y;
 				INFOPLIST_FILE = PilgrimHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.edgar.PilgrimHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.edgarind.PilgrimHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

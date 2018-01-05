@@ -8,13 +8,6 @@
 
 import UIKit
 
-// TODO: Move this
-enum CellState {
-    case COMPLETED_ACTION
-    case CURRENT_ACTION
-    case UPCOMING_ACTION
-}
-
 
 class TurnViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -26,11 +19,15 @@ class TurnViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var CurrentPhaseNameLabel: UILabel!
     @IBOutlet weak var PhaseStepListTable: UITableView!
     @IBOutlet weak var CurrentStepDetailsLabel: UILabel!
+    @IBOutlet weak var CurrentStepDetailsViewContainer: UIView!
     @IBOutlet weak var SkipPhaseButton: UIButton!
     @IBOutlet weak var NextStepButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up Turn Details area (markdown view)
+        let downView = try? DownView(frame: CurrentStepDetailsViewContainer.bounds)
 
         setUpTurn()
     }
@@ -77,7 +74,7 @@ class TurnViewController: UIViewController, UITableViewDataSource, UITableViewDe
         PhaseStepListTable.reloadData()
         // TODO: Reset height to avoid excess cell display?
         
-        // Apply details for current step
+        // Apply details for current step and fix sizing
         CurrentStepDetailsLabel.text = model.currentActionDetails() as String
         CurrentStepDetailsLabel.sizeToFit()
         

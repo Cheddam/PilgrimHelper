@@ -231,13 +231,6 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJz-JX-O9h">
-                                <rect key="frame" x="16" y="395" width="343" height="172"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVi-Ng-4C6" userLabel="Continue">
                                 <rect key="frame" x="187" y="579" width="188" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -259,6 +252,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWo-eg-cFm" userLabel="Details View Holder">
+                                <rect key="frame" x="16" y="395" width="343" height="172"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="RZZ-Fc-Ukn"/>
@@ -266,7 +264,7 @@
                     <connections>
                         <outlet property="CurrentPhaseNameLabel" destination="2ck-Ck-MPJ" id="LRa-JP-p2S"/>
                         <outlet property="CurrentPlayerTitleLabel" destination="h4g-He-sb2" id="AU4-gV-H76"/>
-                        <outlet property="CurrentStepDetailsLabel" destination="sJz-JX-O9h" id="c19-dg-Iwk"/>
+                        <outlet property="CurrentStepDetailsViewContainer" destination="tWo-eg-cFm" id="CzQ-KT-BsN"/>
                         <outlet property="NextStepButton" destination="mVi-Ng-4C6" id="1QT-Tg-I6H"/>
                         <outlet property="PhaseStepListTable" destination="qVs-Xf-oBZ" id="YPy-gE-0Up"/>
                         <outlet property="SkipPhaseButton" destination="dLn-dY-reF" id="8a0-b9-2zC"/>
